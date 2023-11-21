@@ -45,12 +45,14 @@ public class ILPInstance implements IInstance {
         fields[offset] = value;
         return old;
     }
-
+    /**
+     * fait appelle à la méthode avec son argument 
+     */
     @Override
 	public Object send(Interpreter interpreter, 
-                       String message, 
+                       String methodName, 
                        Object[] arguments ) throws EvaluationException {
-        return classOf().send(interpreter, this, message, arguments);
+        return classOf().send(interpreter, this, methodName, arguments);
     }
     
     // Useful for debug in Eclipse

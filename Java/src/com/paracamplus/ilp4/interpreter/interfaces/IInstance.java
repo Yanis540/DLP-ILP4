@@ -13,6 +13,9 @@ public interface IInstance {
     IClass classOf();
     Object read (String fieldName) throws EvaluationException;
     Object write (String fieldName, Object value) throws EvaluationException;
+    /**
+     * fait appelle à la méthode avec son argument 
+    */
     Object send (Interpreter interpreter, 
                  String message, 
                  Object[] arguments) throws EvaluationException;

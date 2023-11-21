@@ -117,11 +117,11 @@ public abstract class ILPAbstractClass implements IClass, Inamed {
             String msg = "Wrong arity for " + message;
             throw new EvaluationException(msg);
         }
-        List<Object> functionArguments = new Vector<>();
-        functionArguments.add(receiver);
+        List<Object> args = new Vector<>();
+        args.add(receiver);
         for ( Object argument : arguments ) {
-            functionArguments.add(argument);
+            args.add(argument);
         }
-        return method.apply(interpreter, functionArguments.toArray()); 
+        return method.apply(interpreter, args.toArray()); 
     }
 }
