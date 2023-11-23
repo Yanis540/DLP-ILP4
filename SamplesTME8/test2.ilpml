@@ -4,6 +4,6 @@ class Point extends Object
     var y;
 }
 
-new Point(11, 22) has "false"
+(new Point(11, 22))["x"]
 
 
