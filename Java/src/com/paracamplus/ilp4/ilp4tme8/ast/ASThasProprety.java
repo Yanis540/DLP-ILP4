@@ -6,16 +6,16 @@ import com.paracamplus.ilp4.ilp4tme8.interfaces.IASThasProprety;
 import com.paracamplus.ilp4.ilp4tme8.interfaces.IASTvisitor;
 
 public class ASThasProprety extends ASTexpression implements IASThasProprety{
-    public ASThasProprety (IASTexpression object, IASTexpression proprety) {
-        this.object = object;
+    public ASThasProprety (IASTexpression target, IASTexpression proprety) {
+        this.target = target;
         this.proprety = proprety;
     }
-    private final IASTexpression object;
+    private final IASTexpression target;
     private final IASTexpression proprety;
 
     @Override
-    public IASTexpression getObject() {
-        return this.object; 
+    public IASTexpression getTarget() {
+        return this.target; 
     }
 
     @Override

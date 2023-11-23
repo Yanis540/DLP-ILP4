@@ -6,18 +6,18 @@ import com.paracamplus.ilp4.ilp4tme8.interfaces.IASTvisitor;
 import com.paracamplus.ilp4.ilp4tme8.interfaces.IASTwriteProprety;
 
 public class ASTwriteProprety extends ASTexpression  implements IASTwriteProprety{
-    public ASTwriteProprety (IASTexpression object, IASTexpression proprety,IASTexpression value) {
-        this.object = object;
+    public ASTwriteProprety (IASTexpression target, IASTexpression proprety,IASTexpression value) {
+        this.target = target;
         this.proprety = proprety;
         this.value = value;
     }
-    private final IASTexpression object;
+    private final IASTexpression target;
     private final IASTexpression proprety;
     private final IASTexpression value;
 
     @Override
-    public IASTexpression getObject() {
-        return this.object; 
+    public IASTexpression getTarget() {
+        return this.target; 
     }
 
     @Override
