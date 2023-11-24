@@ -1,5 +1,9 @@
 package com.paracamplus.ilp4.ilp4tme8.interpreter;
 
+import java.util.List;
+import java.util.Vector;
+
+import com.paracamplus.ilp1.interfaces.IASTexpression;
 import com.paracamplus.ilp1.interpreter.interfaces.EvaluationException;
 import com.paracamplus.ilp1.interpreter.interfaces.IGlobalVariableEnvironment;
 import com.paracamplus.ilp1.interpreter.interfaces.ILexicalEnvironment;
@@ -8,7 +12,9 @@ import com.paracamplus.ilp4.ilp4tme8.interfaces.IASThasProprety;
 import com.paracamplus.ilp4.ilp4tme8.interfaces.IASTreadProprety;
 import com.paracamplus.ilp4.ilp4tme8.interfaces.IASTvisitor;
 import com.paracamplus.ilp4.ilp4tme8.interfaces.IASTwriteProprety;
-import com.paracamplus.ilp4.interpreter.ILPInstance;
+import com.paracamplus.ilp4.interfaces.IASTfieldRead;
+import com.paracamplus.ilp4.interfaces.IASTinstantiation;
+import com.paracamplus.ilp4.interpreter.interfaces.IClass;
 import com.paracamplus.ilp4.interpreter.interfaces.IClassEnvironment;
 
 public class Interpreter  extends com.paracamplus.ilp4.interpreter.Interpreter
@@ -68,6 +74,32 @@ implements IASTvisitor<Object, ILexicalEnvironment, EvaluationException> {
             return Boolean.FALSE; 
         }
     }
+
+    @Override
+	public Object visit(IASTinstantiation iast, ILexicalEnvironment lexenv) 
+            throws EvaluationException {
+        IClass clazz = getClassEnvironment().getILPClass(iast.getClassName());
+        List<Object> args = new Vector<Object>();
+        for ( IASTexpression arg : iast.getArguments() ) {
+            Object value = arg.accept(this, lexenv);
+            args.add(value);
+        }
+        return new ILPInstance(clazz, args.toArray());
+    }    
+     
+    @Override
+	public Object visit(IASTfieldRead iast, ILexicalEnvironment lexenv) 
+            throws EvaluationException {
+        String fieldName = iast.getFieldName();
+        Object target = iast.getTarget().accept(this, lexenv);
+        if ( target instanceof ILPInstance ) {
+            return ((ILPInstance) target).read(fieldName);
+        } else {
+            String msg = "Not an ILP instance " + target;
+            throw new EvaluationException(msg);
+        }
+    }
+    
 
     
 }
