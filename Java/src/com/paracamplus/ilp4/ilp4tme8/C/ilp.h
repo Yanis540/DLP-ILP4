@@ -16,6 +16,7 @@
 #include <string.h>
 #include <setjmp.h>
 
+
 /** Compatibility */
 #if !defined(__APPLE_CC__)
 extern int snprintf(char *str, size_t size, const char *format, ...);
@@ -35,7 +36,13 @@ enum ILP_BOOLEAN_VALUE {
 #define ILP_EXCEPTION_BUFFER_LENGTH    1000
 #define ILP_EXCEPTION_CULPRIT_LENGTH     10
 
+
 /** The structure of ILP objects: a header and additional fields. */
+typedef struct ILP_DynamicField {
+    char*                   name;
+    struct ILP_Object*      value;
+    struct ILP_DynamicField*    next;
+} *ILP_DynamicField;
 
 typedef struct ILP_Object {
      struct ILP_Class*  _class;
@@ -73,6 +80,7 @@ typedef struct ILP_Object {
           } asField;
           struct asInstance {
                struct ILP_Object*  field[1];
+               struct ILP_DynamicField * dynamicField;
           } asInstance;
           struct asClosure {
                ILP_general_function function;

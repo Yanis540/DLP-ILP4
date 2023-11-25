@@ -12,7 +12,9 @@ import com.paracamplus.ilp1.compiler.ReturnDestination;
 import com.paracamplus.ilp1.compiler.interfaces.IASTCglobalVariable;
 import com.paracamplus.ilp1.compiler.interfaces.IGlobalVariableEnvironment;
 import com.paracamplus.ilp1.compiler.interfaces.IOperatorEnvironment;
+import com.paracamplus.ilp1.interfaces.IASTexpression;
 import com.paracamplus.ilp1.interfaces.IASTvariable;
+import com.paracamplus.ilp1.interfaces.Inamed;
 import com.paracamplus.ilp2.interfaces.IASTfunctionDefinition;
 import com.paracamplus.ilp3.compiler.interfaces.IASTClambda;
 import com.paracamplus.ilp4.compiler.interfaces.IASTCclassDefinition;
@@ -22,6 +24,7 @@ import com.paracamplus.ilp4.ilp4tme8.interfaces.IASThasProprety;
 import com.paracamplus.ilp4.ilp4tme8.interfaces.IASTreadProprety;
 import com.paracamplus.ilp4.ilp4tme8.interfaces.IASTvisitor;
 import com.paracamplus.ilp4.ilp4tme8.interfaces.IASTwriteProprety;
+import com.paracamplus.ilp4.interfaces.IASTinstantiation;
 import com.paracamplus.ilp4.interfaces.IASTprogram;
 import com.paracamplus.ilp4.ilp4tme8.compiler.normalizer.INormalizationFactory;
 import com.paracamplus.ilp4.ilp4tme8.compiler.normalizer.NormalizationFactory;
@@ -120,6 +123,49 @@ implements IASTvisitor<Void, Compiler.Context, CompilationException> {
         + "#include \"ilp.h\" \n"
         + "#include \"proprety.h\" \n\n"
     ;
+    @Override
+	public Void visit(IASTinstantiation iast, Context context)
+            throws CompilationException {
+        emit("{ \n");
+        IASTvariable tmpInstance = context.newTemporaryVariable();
+        emit("  ILP_Object " + tmpInstance.getMangledName() + "; \n");
+        
+        IASTexpression[] arguments = iast.getArguments();
+        IASTvariable[] tmps = new IASTvariable[arguments.length];
+        for ( int i=0 ; i<arguments.length ; i++ ) {
+            IASTvariable tmp = context.newTemporaryVariable();
+            emit("  ILP_Object " + tmp.getMangledName() + "; \n");
+            tmps[i] = tmp;
+        }
+        for ( int i=0 ; i<arguments.length ; i++ ) {
+            IASTexpression expression = arguments[i];
+            IASTvariable tmp = tmps[i];
+            Context c = context.redirect(new AssignDestination(tmp));
+            expression.accept(this, c);
+        }
+        
+        emit(tmpInstance.getMangledName());
+        emit(" = ILP_MakeInstance(");
+        emit(Inamed.computeMangledName(iast.getClassName()));
+        emit("); \n");
+        
+        for ( int i=0 ; i<arguments.length ; i++ ) {
+            emit(tmpInstance.getMangledName());
+            emit("->_content.asInstance.field[");
+            emit(i);
+            emit("] = ");
+            emit(tmps[i].getMangledName());
+            emit("; \n");
+        }
+
+        emit(tmpInstance.getMangledName());
+        emit("->_content.asInstance.dynamicField = NULL ;\n");
+
+        emit(context.destination.compile());
+        emit(tmpInstance.getMangledName());
+        emit("; \n}\n");
+        return null;
+    }
     
     @Override
     public Void visit(IASTreadProprety iast, Context context) throws CompilationException {
