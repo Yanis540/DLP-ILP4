@@ -150,6 +150,7 @@ implements IASTvisitor<Object, ILexicalEnvironment, EvaluationException>
             throws EvaluationException {
         String message = iast.getMethodName();
         Object receiver = iast.getReceiver().accept(this, lexenv);
+        // System.out.println(">>>>" + receiver);
         List<Object> arguments = new Vector<Object>();
         for ( IASTexpression arg : iast.getArguments() ) {
             Object value = arg.accept(this, lexenv);
