@@ -8,4 +8,5 @@ public interface IASTlisteRange extends IASTexpression{
     IASTvariable getVariable(); 
     IASTexpression getMax(); 
     IASTexpression getCondition(); 
+    boolean getIsConditionPresent();
 }

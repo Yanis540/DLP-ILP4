@@ -11,11 +11,13 @@ import com.paracamplus.ilp4.partiel2022.interfaces.IASTvisitor;
 public class ASTlisteRange extends ASTexpression implements IASTlisteRange {
     private IASTexpression body,max ,condition; 
     private IASTvariable variable ; 
+    private boolean isConditionPresent=true; 
     public ASTlisteRange(IASTexpression body, IASTvariable variable, IASTexpression max,@Nullable IASTexpression condition){
         this.body = body; 
         this.max = max; 
         this.condition = condition; 
         this.variable = variable; 
+        this.isConditionPresent = (condition != null);
     }
     @Override
     public IASTexpression getBody() {
@@ -35,6 +37,10 @@ public class ASTlisteRange extends ASTexpression implements IASTlisteRange {
     @Override
     public IASTexpression getCondition() {
         return this.condition; 
+    }
+    @Override
+    public boolean getIsConditionPresent() {
+        return this.isConditionPresent; 
     }
 
     @Override

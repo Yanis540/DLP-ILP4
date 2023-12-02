@@ -28,7 +28,10 @@ public class GetListeElement extends Primitive{
         if(!(l instanceof List))
             throw new EvaluationException("Not a list");
         List<Object> liste= (List) l;
-        if(index>liste.size())
+        int size = liste.size();
+        if(size == 0 )
+            throw new EvaluationException("Can't use get function on Empty list");
+        if(index>size)
             throw new EvaluationException("Index out of bound");
         
         return liste.get(index);
