@@ -133,14 +133,6 @@ public class ILPMLgrammar4Parser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_prog; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ILPMLgrammar4Listener ) ((ILPMLgrammar4Listener)listener).enterProg(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ILPMLgrammar4Listener ) ((ILPMLgrammar4Listener)listener).exitProg(this);
-		}
 	}
 
 	public final ProgContext prog() throws RecognitionException {
@@ -239,14 +231,6 @@ public class ILPMLgrammar4Parser extends Parser {
 			return getRuleContext(GlobalFunDefContext.class,0);
 		}
 		public GlobalFunctionDefinitionContext(GlobalDefContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ILPMLgrammar4Listener ) ((ILPMLgrammar4Listener)listener).enterGlobalFunctionDefinition(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ILPMLgrammar4Listener ) ((ILPMLgrammar4Listener)listener).exitGlobalFunctionDefinition(this);
-		}
 	}
 	@SuppressWarnings("CheckReturnValue")
 	public static class ClassDefinitionContext extends GlobalDefContext {
@@ -255,14 +239,6 @@ public class ILPMLgrammar4Parser extends Parser {
 			return getRuleContext(ClassDefContext.class,0);
 		}
 		public ClassDefinitionContext(GlobalDefContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ILPMLgrammar4Listener ) ((ILPMLgrammar4Listener)listener).enterClassDefinition(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ILPMLgrammar4Listener ) ((ILPMLgrammar4Listener)listener).exitClassDefinition(this);
-		}
 	}
 
 	public final GlobalDefContext globalDef() throws RecognitionException {
@@ -326,14 +302,6 @@ public class ILPMLgrammar4Parser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_classDef; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ILPMLgrammar4Listener ) ((ILPMLgrammar4Listener)listener).enterClassDef(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ILPMLgrammar4Listener ) ((ILPMLgrammar4Listener)listener).exitClassDef(this);
-		}
 	}
 
 	public final ClassDefContext classDef() throws RecognitionException {
@@ -455,14 +423,6 @@ public class ILPMLgrammar4Parser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_methodDef; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ILPMLgrammar4Listener ) ((ILPMLgrammar4Listener)listener).enterMethodDef(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ILPMLgrammar4Listener ) ((ILPMLgrammar4Listener)listener).exitMethodDef(this);
-		}
 	}
 
 	public final MethodDefContext methodDef() throws RecognitionException {
@@ -541,14 +501,6 @@ public class ILPMLgrammar4Parser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_globalFunDef; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ILPMLgrammar4Listener ) ((ILPMLgrammar4Listener)listener).enterGlobalFunDef(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ILPMLgrammar4Listener ) ((ILPMLgrammar4Listener)listener).exitGlobalFunDef(this);
-		}
 	}
 
 	public final GlobalFunDefContext globalFunDef() throws RecognitionException {
@@ -627,14 +579,6 @@ public class ILPMLgrammar4Parser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_localFunDef; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ILPMLgrammar4Listener ) ((ILPMLgrammar4Listener)listener).enterLocalFunDef(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ILPMLgrammar4Listener ) ((ILPMLgrammar4Listener)listener).exitLocalFunDef(this);
-		}
 	}
 
 	public final LocalFunDefContext localFunDef() throws RecognitionException {
@@ -727,14 +671,6 @@ public class ILPMLgrammar4Parser extends Parser {
 			return getRuleContext(ExprContext.class,i);
 		}
 		public BindingContext(ExprContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ILPMLgrammar4Listener ) ((ILPMLgrammar4Listener)listener).enterBinding(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ILPMLgrammar4Listener ) ((ILPMLgrammar4Listener)listener).exitBinding(this);
-		}
 	}
 	@SuppressWarnings("CheckReturnValue")
 	public static class LoopContext extends ExprContext {
@@ -747,14 +683,6 @@ public class ILPMLgrammar4Parser extends Parser {
 			return getRuleContext(ExprContext.class,i);
 		}
 		public LoopContext(ExprContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ILPMLgrammar4Listener ) ((ILPMLgrammar4Listener)listener).enterLoop(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ILPMLgrammar4Listener ) ((ILPMLgrammar4Listener)listener).exitLoop(this);
-		}
 	}
 	@SuppressWarnings("CheckReturnValue")
 	public static class NewContext extends ExprContext {
@@ -769,28 +697,12 @@ public class ILPMLgrammar4Parser extends Parser {
 			return getRuleContext(ExprContext.class,i);
 		}
 		public NewContext(ExprContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ILPMLgrammar4Listener ) ((ILPMLgrammar4Listener)listener).enterNew(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ILPMLgrammar4Listener ) ((ILPMLgrammar4Listener)listener).exitNew(this);
-		}
 	}
 	@SuppressWarnings("CheckReturnValue")
 	public static class VariableContext extends ExprContext {
 		public Token var;
 		public TerminalNode IDENT() { return getToken(ILPMLgrammar4Parser.IDENT, 0); }
 		public VariableContext(ExprContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ILPMLgrammar4Listener ) ((ILPMLgrammar4Listener)listener).enterVariable(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ILPMLgrammar4Listener ) ((ILPMLgrammar4Listener)listener).exitVariable(this);
-		}
 	}
 	@SuppressWarnings("CheckReturnValue")
 	public static class AlternativeContext extends ExprContext {
@@ -804,14 +716,6 @@ public class ILPMLgrammar4Parser extends Parser {
 			return getRuleContext(ExprContext.class,i);
 		}
 		public AlternativeContext(ExprContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ILPMLgrammar4Listener ) ((ILPMLgrammar4Listener)listener).enterAlternative(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ILPMLgrammar4Listener ) ((ILPMLgrammar4Listener)listener).exitAlternative(this);
-		}
 	}
 	@SuppressWarnings("CheckReturnValue")
 	public static class InvocationContext extends ExprContext {
@@ -825,28 +729,12 @@ public class ILPMLgrammar4Parser extends Parser {
 			return getRuleContext(ExprContext.class,i);
 		}
 		public InvocationContext(ExprContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ILPMLgrammar4Listener ) ((ILPMLgrammar4Listener)listener).enterInvocation(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ILPMLgrammar4Listener ) ((ILPMLgrammar4Listener)listener).exitInvocation(this);
-		}
 	}
 	@SuppressWarnings("CheckReturnValue")
 	public static class ConstFloatContext extends ExprContext {
 		public Token floatConst;
 		public TerminalNode FLOAT() { return getToken(ILPMLgrammar4Parser.FLOAT, 0); }
 		public ConstFloatContext(ExprContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ILPMLgrammar4Listener ) ((ILPMLgrammar4Listener)listener).enterConstFloat(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ILPMLgrammar4Listener ) ((ILPMLgrammar4Listener)listener).exitConstFloat(this);
-		}
 	}
 	@SuppressWarnings("CheckReturnValue")
 	public static class SequenceContext extends ExprContext {
@@ -859,26 +747,10 @@ public class ILPMLgrammar4Parser extends Parser {
 			return getRuleContext(ExprContext.class,i);
 		}
 		public SequenceContext(ExprContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ILPMLgrammar4Listener ) ((ILPMLgrammar4Listener)listener).enterSequence(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ILPMLgrammar4Listener ) ((ILPMLgrammar4Listener)listener).exitSequence(this);
-		}
 	}
 	@SuppressWarnings("CheckReturnValue")
 	public static class SelfContext extends ExprContext {
 		public SelfContext(ExprContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ILPMLgrammar4Listener ) ((ILPMLgrammar4Listener)listener).enterSelf(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ILPMLgrammar4Listener ) ((ILPMLgrammar4Listener)listener).exitSelf(this);
-		}
 	}
 	@SuppressWarnings("CheckReturnValue")
 	public static class VariableAssignContext extends ExprContext {
@@ -889,14 +761,6 @@ public class ILPMLgrammar4Parser extends Parser {
 			return getRuleContext(ExprContext.class,0);
 		}
 		public VariableAssignContext(ExprContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ILPMLgrammar4Listener ) ((ILPMLgrammar4Listener)listener).enterVariableAssign(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ILPMLgrammar4Listener ) ((ILPMLgrammar4Listener)listener).exitVariableAssign(this);
-		}
 	}
 	@SuppressWarnings("CheckReturnValue")
 	public static class ReadFieldContext extends ExprContext {
@@ -907,26 +771,10 @@ public class ILPMLgrammar4Parser extends Parser {
 		}
 		public TerminalNode IDENT() { return getToken(ILPMLgrammar4Parser.IDENT, 0); }
 		public ReadFieldContext(ExprContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ILPMLgrammar4Listener ) ((ILPMLgrammar4Listener)listener).enterReadField(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ILPMLgrammar4Listener ) ((ILPMLgrammar4Listener)listener).exitReadField(this);
-		}
 	}
 	@SuppressWarnings("CheckReturnValue")
 	public static class ConstFalseContext extends ExprContext {
 		public ConstFalseContext(ExprContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ILPMLgrammar4Listener ) ((ILPMLgrammar4Listener)listener).enterConstFalse(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ILPMLgrammar4Listener ) ((ILPMLgrammar4Listener)listener).exitConstFalse(this);
-		}
 	}
 	@SuppressWarnings("CheckReturnValue")
 	public static class UnaryContext extends ExprContext {
@@ -936,14 +784,6 @@ public class ILPMLgrammar4Parser extends Parser {
 			return getRuleContext(ExprContext.class,0);
 		}
 		public UnaryContext(ExprContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ILPMLgrammar4Listener ) ((ILPMLgrammar4Listener)listener).enterUnary(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ILPMLgrammar4Listener ) ((ILPMLgrammar4Listener)listener).exitUnary(this);
-		}
 	}
 	@SuppressWarnings("CheckReturnValue")
 	public static class SendContext extends ExprContext {
@@ -959,52 +799,20 @@ public class ILPMLgrammar4Parser extends Parser {
 		}
 		public TerminalNode IDENT() { return getToken(ILPMLgrammar4Parser.IDENT, 0); }
 		public SendContext(ExprContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ILPMLgrammar4Listener ) ((ILPMLgrammar4Listener)listener).enterSend(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ILPMLgrammar4Listener ) ((ILPMLgrammar4Listener)listener).exitSend(this);
-		}
 	}
 	@SuppressWarnings("CheckReturnValue")
 	public static class ConstTrueContext extends ExprContext {
 		public ConstTrueContext(ExprContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ILPMLgrammar4Listener ) ((ILPMLgrammar4Listener)listener).enterConstTrue(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ILPMLgrammar4Listener ) ((ILPMLgrammar4Listener)listener).exitConstTrue(this);
-		}
 	}
 	@SuppressWarnings("CheckReturnValue")
 	public static class ConstIntegerContext extends ExprContext {
 		public Token intConst;
 		public TerminalNode INT() { return getToken(ILPMLgrammar4Parser.INT, 0); }
 		public ConstIntegerContext(ExprContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ILPMLgrammar4Listener ) ((ILPMLgrammar4Listener)listener).enterConstInteger(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ILPMLgrammar4Listener ) ((ILPMLgrammar4Listener)listener).exitConstInteger(this);
-		}
 	}
 	@SuppressWarnings("CheckReturnValue")
 	public static class SuperContext extends ExprContext {
 		public SuperContext(ExprContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ILPMLgrammar4Listener ) ((ILPMLgrammar4Listener)listener).enterSuper(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ILPMLgrammar4Listener ) ((ILPMLgrammar4Listener)listener).exitSuper(this);
-		}
 	}
 	@SuppressWarnings("CheckReturnValue")
 	public static class WriteFieldContext extends ExprContext {
@@ -1019,28 +827,12 @@ public class ILPMLgrammar4Parser extends Parser {
 		}
 		public TerminalNode IDENT() { return getToken(ILPMLgrammar4Parser.IDENT, 0); }
 		public WriteFieldContext(ExprContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ILPMLgrammar4Listener ) ((ILPMLgrammar4Listener)listener).enterWriteField(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ILPMLgrammar4Listener ) ((ILPMLgrammar4Listener)listener).exitWriteField(this);
-		}
 	}
 	@SuppressWarnings("CheckReturnValue")
 	public static class ConstStringContext extends ExprContext {
 		public Token stringConst;
 		public TerminalNode STRING() { return getToken(ILPMLgrammar4Parser.STRING, 0); }
 		public ConstStringContext(ExprContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ILPMLgrammar4Listener ) ((ILPMLgrammar4Listener)listener).enterConstString(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ILPMLgrammar4Listener ) ((ILPMLgrammar4Listener)listener).exitConstString(this);
-		}
 	}
 	@SuppressWarnings("CheckReturnValue")
 	public static class TryContext extends ExprContext {
@@ -1056,14 +848,6 @@ public class ILPMLgrammar4Parser extends Parser {
 		}
 		public TerminalNode IDENT() { return getToken(ILPMLgrammar4Parser.IDENT, 0); }
 		public TryContext(ExprContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ILPMLgrammar4Listener ) ((ILPMLgrammar4Listener)listener).enterTry(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ILPMLgrammar4Listener ) ((ILPMLgrammar4Listener)listener).exitTry(this);
-		}
 	}
 	@SuppressWarnings("CheckReturnValue")
 	public static class CodefinitionsContext extends ExprContext {
@@ -1080,14 +864,6 @@ public class ILPMLgrammar4Parser extends Parser {
 			return getRuleContext(ExprContext.class,0);
 		}
 		public CodefinitionsContext(ExprContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ILPMLgrammar4Listener ) ((ILPMLgrammar4Listener)listener).enterCodefinitions(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ILPMLgrammar4Listener ) ((ILPMLgrammar4Listener)listener).exitCodefinitions(this);
-		}
 	}
 	@SuppressWarnings("CheckReturnValue")
 	public static class BinaryContext extends ExprContext {
@@ -1101,14 +877,6 @@ public class ILPMLgrammar4Parser extends Parser {
 			return getRuleContext(ExprContext.class,i);
 		}
 		public BinaryContext(ExprContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ILPMLgrammar4Listener ) ((ILPMLgrammar4Listener)listener).enterBinary(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ILPMLgrammar4Listener ) ((ILPMLgrammar4Listener)listener).exitBinary(this);
-		}
 	}
 	@SuppressWarnings("CheckReturnValue")
 	public static class LambdaContext extends ExprContext {
@@ -1123,14 +891,6 @@ public class ILPMLgrammar4Parser extends Parser {
 			return getToken(ILPMLgrammar4Parser.IDENT, i);
 		}
 		public LambdaContext(ExprContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ILPMLgrammar4Listener ) ((ILPMLgrammar4Listener)listener).enterLambda(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ILPMLgrammar4Listener ) ((ILPMLgrammar4Listener)listener).exitLambda(this);
-		}
 	}
 
 	public final ExprContext expr() throws RecognitionException {
