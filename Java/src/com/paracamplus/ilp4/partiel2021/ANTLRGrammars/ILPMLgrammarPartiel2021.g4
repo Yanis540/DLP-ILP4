@@ -48,6 +48,9 @@ expr returns [com.paracamplus.ilp1.interfaces.IASTexpression node]
 
 // ajouts (avec priorité élevée)
 
+    | '$' tag=IDENT '('(exprs+=expr)? (','? exprs+=expr)*  ')'    # Tag
+    | 'match' disc=expr 'with' tag=IDENT '(' (vars+=IDENT)? (','? vars+=IDENT)*')' 
+        'then' consequence=expr 'else' alternant=expr   # Match
 // objets spéciaux
     | 'self'    # Self
     | 'super' # Super

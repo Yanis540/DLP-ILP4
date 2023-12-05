@@ -30,6 +30,30 @@ public class ILPMLListener implements ILPMLgrammarPartiel2021Listener{
 		this.factory = factory;		
 	}
 
+
+	public void enterTag(TagContext ctx){
+		
+	}
+	public void enterMatch(MatchContext ctx){
+
+	}
+	
+	public void exitTag(TagContext ctx){
+		ctx.node = factory.newTag(
+			factory.newVariable(ctx.tag.getText()), 
+			toExpressions(ctx.exprs)
+		);
+	}
+	public void exitMatch(MatchContext ctx){
+		ctx.node = factory.newMatch(
+			ctx.disc.node, 
+			factory.newVariable(ctx.tag.getText()), 
+			toVariables(ctx.vars, false),
+			ctx.consequence.node, 
+			ctx.alternant.node
+		);
+	}
+
 	
 	/*
 	 * Il faut se souvenir du nom de la classe en cours de définition pour
