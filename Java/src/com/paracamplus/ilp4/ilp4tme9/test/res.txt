@@ -1,0 +1,27 @@
+test1 : 
+    [ With Cache ] : 
+        Temps d'exécution: 236.113998 milliseconde
+        Cache Calls of method: 100001 
+        Cache Miss of method: 2 
+        Cache Hit ratio: 99.998000 
+    [ Without Cache ] : 
+        Temps d'exécution: 264.639008 milliseconde
+        Cache Calls of method: 100001 
+        Cache Miss of method: 2 
+        Cache Hit ratio: 99.998000 
+
+
+
+
+test2 : 
+    [ With Cache ] : 
+        Temps d'exécution: 432.009979 milliseconde
+        Cache Calls of method: 300001 
+        Cache Miss of method: 4 
+        Cache Hit ratio: 99.998667 
+
+    [ Without Cache ] : 
+        Temps d'exécution: 642.358948 milliseconde
+        Cache Calls of method: 300001 
+        Cache Miss of method: 4 
+        Cache Hit ratio: 99.998667 
