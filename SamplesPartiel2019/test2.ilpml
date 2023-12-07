@@ -4,5 +4,5 @@ class File {
     method close() ( self.isOpen = false )
     method prn(v) ( if self.isOpen then print(v) else print ("CLOSED") )
 }
-autoclose f = new File(true) in ( g = f; f.prn("mot1 ") );
+autoclose f = 1 in ( g = f; f.prn("mot1 ") );
 g.prn("mot2");

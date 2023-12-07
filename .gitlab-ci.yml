@@ -15,3 +15,11 @@ TME8:
   artifacts:
     reports:
       junit: report.xml
+TME9:
+  stage: cours
+  script: >
+    /home/dlp/run.sh -id ILP4 -name ILP4
+    com.paracamplus.ilp4.ilp4tme9.test.CompilerTest
+  artifacts:
+    reports:
+      junit: report.xml
