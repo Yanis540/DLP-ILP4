@@ -51,8 +51,24 @@ implements IASTvisitor<Object, ILexicalEnvironment, EvaluationException>  {
         }
     }
     @Override
-    public Object visit(IASTdefined iast, ILexicalEnvironment data) throws EvaluationException {
-        return 1; 
+    public Object visit(IASTdefined iast, ILexicalEnvironment lexenv) throws EvaluationException {
+        IASTvariable variable = iast.getVariable();
+        try{
+            // getting in the local env 
+            Object value = lexenv.getValue(variable);
+            if(value == null)
+                return Boolean.FALSE; 
+            return Boolean.TRUE;
+        }
+        catch(EvaluationException e){
+            if(
+                globals.contains(variable.getName())==true && 
+                getGlobalVariableEnvironment().getGlobalVariableValue(variable.getName())!=null
+            )
+                return Boolean.TRUE;
+            else 
+                return Boolean.FALSE; 
+        }
     }
     
 }
