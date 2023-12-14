@@ -47,7 +47,7 @@ expr returns [com.paracamplus.ilp1.interfaces.IASTexpression node]
     : '(' exprs+=expr (';'? exprs+=expr)* ';'? ')' # Sequence
 
 // ajouts (avec priorité élevée)
-
+    | 'exists' '('var=IDENT ')' # Exists
 // objets spéciaux
     | 'self'    # Self
     | 'super' # Super

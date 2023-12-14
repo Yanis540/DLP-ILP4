@@ -21,6 +21,8 @@ import com.paracamplus.ilp4.interfaces.IASTmethodDefinition;
 
 
 import antlr4.ILPMLgrammar4Tme10Listener;
+import antlr4.ILPMLgrammar4Tme10Parser.ExistsContext;
+
 import static antlr4.ILPMLgrammar4Tme10Parser.*;
 
 public class ILPMLListener implements ILPMLgrammar4Tme10Listener {
@@ -30,6 +32,16 @@ public class ILPMLListener implements ILPMLgrammar4Tme10Listener {
 	public ILPMLListener(IASTfactory factory) {
 		super();
 		this.factory = factory;		
+	}
+	@Override
+	public void enterExists(ExistsContext ctx) {
+	}
+
+	@Override
+	public void exitExists(ExistsContext ctx) {
+		ctx.node = factory.newExists(
+			factory.newVariable(ctx.var.getText())
+		);
 	}
 
 	
@@ -410,4 +422,6 @@ public class ILPMLListener implements ILPMLgrammar4Tme10Listener {
 	@Override	public void enterSuper(SuperContext ctx) {}
 	@Override	public void enterClassDefinition(ClassDefinitionContext ctx) {}
 	@Override	public void enterNew(NewContext ctx) {}
+
+
 }
