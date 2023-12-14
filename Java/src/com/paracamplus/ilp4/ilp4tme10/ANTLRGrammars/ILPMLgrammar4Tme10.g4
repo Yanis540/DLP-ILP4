@@ -48,6 +48,7 @@ expr returns [com.paracamplus.ilp1.interfaces.IASTexpression node]
 
 // ajouts (avec priorité élevée)
     | 'exists' '('var=IDENT ')' # Exists
+    | 'defined' '('var=IDENT ')' # Defined
 // objets spéciaux
     | 'self'    # Self
     | 'super' # Super

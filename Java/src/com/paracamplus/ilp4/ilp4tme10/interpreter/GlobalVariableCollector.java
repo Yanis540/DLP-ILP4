@@ -35,7 +35,7 @@ import com.paracamplus.ilp1.interfaces.IASTvariable;
 import com.paracamplus.ilp1.interpreter.EmptyLexicalEnvironment;
 import com.paracamplus.ilp1.interpreter.interfaces.EvaluationException;
 import com.paracamplus.ilp1.interpreter.interfaces.ILexicalEnvironment;
-
+import com.paracamplus.ilp4.ilp4tme10.interfaces.IASTdefined;
 import com.paracamplus.ilp4.ilp4tme10.interfaces.IASTexists;
 import com.paracamplus.ilp4.ilp4tme10.interfaces.IASTvisitor;
 
@@ -315,6 +315,11 @@ public class GlobalVariableCollector implements
 	public Void visit(IASTexists iast, ILexicalEnvironment locals)
 			throws EvaluationException {
 		return null;
+	}
+
+	@Override
+	public Void visit(IASTdefined iast, ILexicalEnvironment data) throws EvaluationException {
+		return null; 	
 	}
 
 	

@@ -5,6 +5,7 @@ import java.util.Set;
 import com.paracamplus.ilp1.compiler.CompilationException;
 import com.paracamplus.ilp1.compiler.interfaces.IASTCglobalVariable;
 import com.paracamplus.ilp4.ilp4tme10.compiler.interfaces.IASTCvisitor;
+import com.paracamplus.ilp4.ilp4tme10.interfaces.IASTdefined;
 import com.paracamplus.ilp4.ilp4tme10.interfaces.IASTexists;
 
 public class GlobalVariableCollector 
@@ -17,6 +18,12 @@ public class GlobalVariableCollector
 	public Set<IASTCglobalVariable> visit(IASTexists iast,
 			Set<IASTCglobalVariable> data) throws CompilationException {
 		return data;
+	}
+
+	@Override
+	public Set<IASTCglobalVariable> visit(IASTdefined iast, Set<IASTCglobalVariable> data) throws CompilationException {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Unimplemented method 'visit'");
 	}
 
 	

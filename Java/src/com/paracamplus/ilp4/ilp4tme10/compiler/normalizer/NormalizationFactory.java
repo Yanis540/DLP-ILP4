@@ -1,7 +1,9 @@
 package com.paracamplus.ilp4.ilp4tme10.compiler.normalizer;
 
 import com.paracamplus.ilp1.interfaces.IASTvariable;
+import com.paracamplus.ilp4.ilp4tme10.ast.ASTdefined;
 import com.paracamplus.ilp4.ilp4tme10.ast.ASTexists;
+import com.paracamplus.ilp4.ilp4tme10.interfaces.IASTdefined;
 import com.paracamplus.ilp4.ilp4tme10.interfaces.IASTexists;
 
 public class NormalizationFactory extends com.paracamplus.ilp4.compiler.normalizer.NormalizationFactory implements INormalizationFactory {
@@ -9,6 +11,11 @@ public class NormalizationFactory extends com.paracamplus.ilp4.compiler.normaliz
     @Override
     public IASTexists newExists(IASTvariable variable) {
         return new ASTexists(variable);
+    }
+
+    @Override
+    public IASTdefined newDefined(IASTvariable variable) {
+        return new ASTdefined(variable);
     }
     
 }

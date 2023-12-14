@@ -7,6 +7,7 @@ import com.paracamplus.ilp1.interpreter.interfaces.EvaluationException;
 import com.paracamplus.ilp1.interpreter.interfaces.IGlobalVariableEnvironment;
 import com.paracamplus.ilp1.interpreter.interfaces.ILexicalEnvironment;
 import com.paracamplus.ilp1.interpreter.interfaces.IOperatorEnvironment;
+import com.paracamplus.ilp4.ilp4tme10.interfaces.IASTdefined;
 import com.paracamplus.ilp4.ilp4tme10.interfaces.IASTexists;
 import com.paracamplus.ilp4.ilp4tme10.interfaces.IASTvisitor;
 import com.paracamplus.ilp4.interfaces.IASTprogram;
@@ -48,6 +49,10 @@ implements IASTvisitor<Object, ILexicalEnvironment, EvaluationException>  {
                 return Boolean.FALSE; 
 
         }
+    }
+    @Override
+    public Object visit(IASTdefined iast, ILexicalEnvironment data) throws EvaluationException {
+        return 1; 
     }
     
 }

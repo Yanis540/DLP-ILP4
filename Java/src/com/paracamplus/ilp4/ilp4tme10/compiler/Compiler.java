@@ -22,6 +22,7 @@ import com.paracamplus.ilp4.ilp4tme10.compiler.interfaces.IASTCvisitor;
 import com.paracamplus.ilp4.ilp4tme10.compiler.normalizer.INormalizationFactory;
 import com.paracamplus.ilp4.ilp4tme10.compiler.normalizer.NormalizationFactory;
 import com.paracamplus.ilp4.ilp4tme10.compiler.normalizer.Normalizer;
+import com.paracamplus.ilp4.ilp4tme10.interfaces.IASTdefined;
 import com.paracamplus.ilp4.ilp4tme10.interfaces.IASTexists;
 import com.paracamplus.ilp4.interfaces.IASTprogram;
 
@@ -137,6 +138,12 @@ implements IASTCvisitor<Void, Compiler.Context, CompilationException>  {
         emit(exists ? "ILP_TRUE" : "ILP_FALSE");
         emit("; \n");
         return null;
+    }
+
+    @Override
+    public Void visit(IASTdefined iast, Context data) throws CompilationException {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'visit'");
     }
 
     

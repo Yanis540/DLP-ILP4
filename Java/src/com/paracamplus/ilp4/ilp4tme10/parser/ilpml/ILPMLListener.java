@@ -43,6 +43,16 @@ public class ILPMLListener implements ILPMLgrammar4Tme10Listener {
 			factory.newVariable(ctx.var.getText())
 		);
 	}
+	@Override
+	public void enterDefined(DefinedContext ctx) {
+	}
+
+	@Override
+	public void exitDefined(DefinedContext ctx) {
+		ctx.node = factory.newDefined(
+			factory.newVariable(ctx.var.getText())
+		);
+	}
 
 	
 	/*
