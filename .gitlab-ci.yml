@@ -28,6 +28,7 @@ TME10:
   script: >
     /home/dlp/run.sh -id ILP4 -name ILP4
     com.paracamplus.ilp4.ilp4tme10.test.InterpreterTest
+    com.paracamplus.ilp4.ilp4tme10.test.CompilerTest
   artifacts:
     reports:
       junit: report.xml

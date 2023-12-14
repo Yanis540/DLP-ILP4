@@ -42,7 +42,7 @@ implements IASTvisitor<Object, ILexicalEnvironment, EvaluationException>  {
         }
         catch(EvaluationException e){
             // super.globalVariableEnvironment.getGlobalVariableValue(var)
-            if(globals.contains(variable.getName())==true)
+            if(globals.contains(variable.getName())==true || getGlobalVariableEnvironment().getGlobalVariableValue(variable.getName())!=null)
                 return Boolean.TRUE;
             else 
                 return Boolean.FALSE; 
