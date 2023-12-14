@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.StringWriter;
 import java.util.Set;
 
+import com.paracamplus.ilp1.compiler.AssignDestination;
 import com.paracamplus.ilp1.compiler.CompilationException;
 import com.paracamplus.ilp1.compiler.NoDestination;
 import com.paracamplus.ilp1.compiler.ReturnDestination;
@@ -13,6 +14,7 @@ import com.paracamplus.ilp1.compiler.interfaces.IASTClocalVariable;
 import com.paracamplus.ilp1.compiler.interfaces.IGlobalVariableEnvironment;
 import com.paracamplus.ilp1.compiler.interfaces.IOperatorEnvironment;
 import com.paracamplus.ilp1.interfaces.IASTvariable;
+import com.paracamplus.ilp2.compiler.interfaces.IASTCglobalFunctionVariable;
 import com.paracamplus.ilp2.interfaces.IASTfunctionDefinition;
 import com.paracamplus.ilp3.compiler.interfaces.IASTClambda;
 import com.paracamplus.ilp4.compiler.interfaces.IASTCclassDefinition;
@@ -51,7 +53,7 @@ implements IASTCvisitor<Void, Compiler.Context, CompilationException>  {
         for ( IASTCglobalVariable gv : iast.getGlobalVariables() ) {
             emit("ILP_Object ");
             emit(gv.getMangledName());
-            emit(" = NULL;\n"); // Modification TME10
+            emit(" = NULL;\n");
         }
         emit(cGlobalVariablesSuffix);
         
@@ -130,10 +132,10 @@ implements IASTCvisitor<Void, Compiler.Context, CompilationException>  {
         IASTvariable variable = iast.getVariable();
         boolean exists = 
             (variable instanceof IASTClocalVariable) 
+            ||(variable instanceof IASTCglobalFunctionVariable) 
             || (globals.contains(variable))
             ||((IGlobalVariableEnvironment)globalVariableEnvironment).contains(variable)
         ;
-        System.out.println(">>>>>>>"+exists+" "+iast.getVariable());
         emit(context.destination.compile());
         emit(exists ? "ILP_TRUE" : "ILP_FALSE");
         emit("; \n");
@@ -141,9 +143,20 @@ implements IASTCvisitor<Void, Compiler.Context, CompilationException>  {
     }
 
     @Override
-    public Void visit(IASTdefined iast, Context data) throws CompilationException {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'visit'");
+    public Void visit(IASTdefined iast, Context context) throws CompilationException {
+        IASTvariable tmp1 = context.newTemporaryVariable();
+        System.out.println(iast.getVariable());
+        emit("{ \n");
+        emit("  ILP_Object " + tmp1.getMangledName() + "; \n");
+        Context c1 = context.redirect(new AssignDestination(tmp1));
+        iast.getVariable().accept(this, c1);
+        emit(context.destination.compile());
+        emit("(");
+        emit(tmp1.getMangledName());
+        emit(" != NULL ? ILP_TRUE : ILP_FALSE");
+        emit("); \n");
+        emit("} \n");
+        return null;
     }
 
     

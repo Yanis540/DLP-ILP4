@@ -22,8 +22,7 @@ public class GlobalVariableCollector
 
 	@Override
 	public Set<IASTCglobalVariable> visit(IASTdefined iast, Set<IASTCglobalVariable> data) throws CompilationException {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Unimplemented method 'visit'");
+		return  iast.getVariable().accept(this,  data); // ? pourquoi jsp ça marche en tt cas ;)
 	}
 
 	

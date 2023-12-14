@@ -23,8 +23,7 @@ implements IASTCvisitor<Void, Set<IASTClocalVariable>, CompilationException> {
 
     @Override
     public Void visit(IASTdefined iast, Set<IASTClocalVariable> data) throws CompilationException {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'visit'");
+        return null; 
     }
     
 }
