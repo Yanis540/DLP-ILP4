@@ -5,6 +5,7 @@ import com.paracamplus.ilp1.interpreter.interfaces.IGlobalVariableEnvironment;
 import com.paracamplus.ilp1.interpreter.interfaces.ILexicalEnvironment;
 import com.paracamplus.ilp1.interpreter.interfaces.IOperatorEnvironment;
 import com.paracamplus.ilp4.interpreter.interfaces.IClassEnvironment;
+import com.paracamplus.ilp4.partiel2018_finale.interfaces.IASTsuperWithArgs;
 import com.paracamplus.ilp4.partiel2018_finale.interfaces.IASTvisitor;
 
 
@@ -14,6 +15,11 @@ implements IASTvisitor<Object, ILexicalEnvironment, EvaluationException> {
     public Interpreter(IGlobalVariableEnvironment globalVariableEnvironment, IOperatorEnvironment operatorEnvironment,
             IClassEnvironment classEnvironment) {
         super(globalVariableEnvironment, operatorEnvironment, classEnvironment);
+    }
+
+    @Override
+    public Object visit(IASTsuperWithArgs iast, ILexicalEnvironment data) throws EvaluationException {
+        return 1; 
     }
     
 }

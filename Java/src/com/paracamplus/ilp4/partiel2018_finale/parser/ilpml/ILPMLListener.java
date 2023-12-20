@@ -20,6 +20,8 @@ import com.paracamplus.ilp4.interfaces.IASTmethodDefinition;
 import com.paracamplus.ilp4.partiel2018_finale.interfaces.IASTfactory;
 
 import antlr4.ILPMLgrammarFinale2018Listener;
+import antlr4.ILPMLgrammarFinale2018Parser.SuperWithArgsContext;
+
 import static antlr4.ILPMLgrammarFinale2018Parser.*;
 public class ILPMLListener implements  ILPMLgrammarFinale2018Listener{
     
@@ -28,6 +30,16 @@ public class ILPMLListener implements  ILPMLgrammarFinale2018Listener{
 	public ILPMLListener(IASTfactory factory) {
 		super();
 		this.factory = factory;		
+	}
+	@Override
+	public void enterSuperWithArgs(SuperWithArgsContext ctx) {
+	}
+
+	@Override
+	public void exitSuperWithArgs(SuperWithArgsContext ctx) {
+		ctx.node = factory.newSuperWithArgs(
+			toExpressions(ctx.args)
+		);
 	}
 
 	
@@ -408,4 +420,6 @@ public class ILPMLListener implements  ILPMLgrammarFinale2018Listener{
 	@Override	public void enterSuper(SuperContext ctx) {}
 	@Override	public void enterClassDefinition(ClassDefinitionContext ctx) {}
 	@Override	public void enterNew(NewContext ctx) {}
+
+	
 }
