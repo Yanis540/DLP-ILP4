@@ -1,0 +1,9 @@
+function :comp deuxfois(x)(
+    2*x
+);
+
+
+
+function puissancesix(x)
+(deuxfois(x) * deuxfois(x) * deuxfois(x));
+let x = puissancesix in x(2);

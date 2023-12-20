@@ -12,12 +12,13 @@ import com.paracamplus.ilp1.interfaces.IASTblock;
 import com.paracamplus.ilp1.interfaces.IASTexpression;
 import com.paracamplus.ilp1.interfaces.IASTvariable;
 import com.paracamplus.ilp2.interfaces.IASTdeclaration;
-import com.paracamplus.ilp2.interfaces.IASTfunctionDefinition;
 import com.paracamplus.ilp3.interfaces.IASTlambda;
 import com.paracamplus.ilp3.interfaces.IASTnamedLambda;
 import com.paracamplus.ilp4.interfaces.IASTclassDefinition;
 import com.paracamplus.ilp4.interfaces.IASTmethodDefinition;
 import com.paracamplus.ilp4.partiel2018.interfaces.IASTfactory;
+import com.paracamplus.ilp4.partiel2018.interfaces.IASTfunctionDefinition;
+
 import antlr4.ILPMLgrammarPartiel2018Listener;
 import static antlr4.ILPMLgrammarPartiel2018Parser.*;
 
@@ -26,7 +27,6 @@ public class ILPMLListener implements ILPMLgrammarPartiel2018Listener  {
 	protected IASTfactory factory;
 	
 	public ILPMLListener(IASTfactory factory) {
-		super();
 		this.factory = factory;		
 	}
 
@@ -219,10 +219,12 @@ public class ILPMLListener implements ILPMLgrammarPartiel2018Listener  {
 	
 	@Override
 	public void exitGlobalFunDef(GlobalFunDefContext ctx) {
+		Boolean isCountable = ctx.count != null ?true : false;  
 		ctx.node = factory.newFunctionDefinition(
-				factory.newVariable(ctx.name.getText()),
-				toVariables(ctx.vars, false), 
-				ctx.body.node);
+			factory.newVariable(ctx.name.getText()),
+			toVariables(ctx.vars, false), 
+			ctx.body.node,isCountable
+		);
 	}
 
 	@Override
@@ -309,9 +311,9 @@ public class ILPMLListener implements ILPMLgrammarPartiel2018Listener  {
 		}
 		IASTexpression e = factory.newSequence(toExpressions(ctx.exprs));
 		ctx.node = factory.newProgram(
-				f.toArray(new IASTfunctionDefinition[0]),
-				c.toArray(new IASTclassDefinition[0]),
-				e);
+			f.toArray(new IASTfunctionDefinition[0]),
+			c.toArray(new IASTclassDefinition[0]),
+		e);
 	}
 
 	@Override

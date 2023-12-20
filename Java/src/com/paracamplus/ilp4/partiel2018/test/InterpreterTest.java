@@ -24,7 +24,7 @@ import com.paracamplus.ilp4.partiel2018.ast.ASTfactory;
 import com.paracamplus.ilp4.partiel2018.parser.ilpml.ILPMLParser;;
 
 public class InterpreterTest  extends com.paracamplus.ilp4.interpreter.test.InterpreterTest{
-    protected static String[] samplesDirName = { "SamplesILP4"};
+    protected static String[] samplesDirName = { "SamplesPartiel2018"};
     protected static String XMLgrammarFile = "XMLGrammars/grammar4.rng";
     
     public InterpreterTest(final File file) {

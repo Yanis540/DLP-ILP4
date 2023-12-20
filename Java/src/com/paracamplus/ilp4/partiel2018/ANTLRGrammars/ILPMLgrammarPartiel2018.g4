@@ -5,7 +5,7 @@ grammar ILPMLgrammarPartiel2018;
 }
 
 // Redéfinition des programmes
-prog returns [com.paracamplus.ilp4.interfaces.IASTprogram node] 
+prog returns [com.paracamplus.ilp4.partiel2018.interfaces.IASTprogram node] 
     : (defs+=globalDef ';'?)*  (exprs+=expr ';'?) * EOF
     ;
 
@@ -31,7 +31,7 @@ methodDef returns [com.paracamplus.ilp4.interfaces.IASTmethodDefinition node]
 
 // fonction globale
 globalFunDef returns [com.paracamplus.ilp2.interfaces.IASTfunctionDefinition node]
-    : 'function' name=IDENT '(' vars+=IDENT? (',' vars+=IDENT)* ')'
+    : 'function' (count = ':comp')? name=IDENT '(' vars+=IDENT? (',' vars+=IDENT)* ')'
         body=expr
     ;
 
