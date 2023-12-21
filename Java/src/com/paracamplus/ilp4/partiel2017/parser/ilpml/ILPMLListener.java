@@ -16,8 +16,8 @@ import com.paracamplus.ilp2.interfaces.IASTfunctionDefinition;
 import com.paracamplus.ilp3.interfaces.IASTlambda;
 import com.paracamplus.ilp3.interfaces.IASTnamedLambda;
 import com.paracamplus.ilp4.interfaces.IASTclassDefinition;
-import com.paracamplus.ilp4.interfaces.IASTfactory;
 import com.paracamplus.ilp4.interfaces.IASTmethodDefinition;
+import com.paracamplus.ilp4.partiel2017.interfaces.IASTfactory;
 
 import antlr4.ILPMLgrammarPartiel2017Listener;
 import static antlr4.ILPMLgrammarPartiel2017Parser.*;
@@ -27,7 +27,6 @@ public class ILPMLListener implements ILPMLgrammarPartiel2017Listener {
 	protected IASTfactory factory;
 	
 	public ILPMLListener(IASTfactory factory) {
-		super();
 		this.factory = factory;		
 	}
 
@@ -38,7 +37,15 @@ public class ILPMLListener implements ILPMLgrammarPartiel2017Listener {
 	 */
 	protected String className = "<unknown>";
 
-	
+	public void enterSwitch(SwitchContext ctx){}
+	public void exitSwitch(SwitchContext ctx){
+		ctx.node = factory.newSwitch(
+			ctx.arg.node,
+			toExpressions(ctx.cases),
+			toExpressions(ctx.casesBody), 
+			ctx.otherwise != null ?ctx.otherwise.node: null
+		);
+	}
 	// ILP1
 
 	@Override 

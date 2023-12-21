@@ -1,0 +1,4 @@
+switch 1 do 
+    case 2 : 3 
+    otherwise : 4
+done
