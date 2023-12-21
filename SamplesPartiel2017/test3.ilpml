@@ -1,0 +1,4 @@
+switch 2 do 
+    case 3 : 1 
+    case 2 : 4 
+done
