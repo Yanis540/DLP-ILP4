@@ -1,4 +1,4 @@
-// Generated from d:/Yanis/FAC/M1/S1/DLP/TP/ilp4/ANTLRGrammars/ILPMLgrammar4.g4 by ANTLR 4.13.1
+// Generated from d:/Yanis/FAC/M1/S1/DLP/TP/ilp4/Java/src/com/paracamplus/ilp4/partiel2016/ANTLRGrammars/ILPMLgrammarPartiel2016.g4 by ANTLR 4.13.1
 
     package antlr4;
 
@@ -12,7 +12,7 @@ import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.misc.*;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast", "CheckReturnValue", "this-escape"})
-public class ILPMLgrammar4Lexer extends Lexer {
+public class ILPMLgrammarPartiel2016Lexer extends Lexer {
 	static { RuntimeMetaData.checkVersion("4.13.1", RuntimeMetaData.VERSION); }
 
 	protected static final DFA[] _decisionToDFA;
@@ -103,13 +103,13 @@ public class ILPMLgrammar4Lexer extends Lexer {
 	}
 
 
-	public ILPMLgrammar4Lexer(CharStream input) {
+	public ILPMLgrammarPartiel2016Lexer(CharStream input) {
 		super(input);
 		_interp = new LexerATNSimulator(this,_ATN,_decisionToDFA,_sharedContextCache);
 	}
 
 	@Override
-	public String getGrammarFileName() { return "ILPMLgrammar4 copy.g4"; }
+	public String getGrammarFileName() { return "ILPMLgrammarPartiel2016.g4"; }
 
 	@Override
 	public String[] getRuleNames() { return ruleNames; }
