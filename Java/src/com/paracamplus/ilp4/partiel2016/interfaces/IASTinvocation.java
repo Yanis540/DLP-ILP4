@@ -4,6 +4,6 @@ import com.paracamplus.ilp1.interfaces.IASTexpression;
 import com.paracamplus.ilp1.interfaces.IASTvariable;
 
 public interface IASTinvocation extends com.paracamplus.ilp1.interfaces.IASTinvocation {
-    IASTvariable[] getOptionalVariables();
+    IASTvariable[] getOptionalVariablesArguments();
     IASTexpression[] getOptionalArgumentsValues();
 }

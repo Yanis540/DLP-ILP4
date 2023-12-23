@@ -1,4 +1,4 @@
 function toto (a &keys c 1)(
-    a
+    c
 )
 toto (1)

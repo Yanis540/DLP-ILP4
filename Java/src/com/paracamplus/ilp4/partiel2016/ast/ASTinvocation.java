@@ -19,7 +19,7 @@ public class ASTinvocation extends com.paracamplus.ilp1.ast.ASTinvocation implem
 
 
     @Override
-    public IASTvariable[] getOptionalVariables() {
+    public IASTvariable[] getOptionalVariablesArguments() {
         return this.optionalVariables; 
     }
 
