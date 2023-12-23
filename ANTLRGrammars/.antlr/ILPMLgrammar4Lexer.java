@@ -109,7 +109,7 @@ public class ILPMLgrammar4Lexer extends Lexer {
 	}
 
 	@Override
-	public String getGrammarFileName() { return "ILPMLgrammar4 copy.g4"; }
+	public String getGrammarFileName() { return "ILPMLgrammar4.g4"; }
 
 	@Override
 	public String[] getRuleNames() { return ruleNames; }

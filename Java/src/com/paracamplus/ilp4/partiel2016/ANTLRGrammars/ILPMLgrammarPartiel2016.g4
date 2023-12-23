@@ -5,7 +5,7 @@ grammar ILPMLgrammarPartiel2016;
 }
 
 // Redéfinition des programmes
-prog returns [com.paracamplus.ilp4.interfaces.IASTprogram node] 
+prog returns [com.paracamplus.ilp4.partiel2016.interfaces.IASTprogram node] 
     : (defs+=globalDef ';'?)*  (exprs+=expr ';'?) * EOF
     ;
 
@@ -31,7 +31,10 @@ methodDef returns [com.paracamplus.ilp4.interfaces.IASTmethodDefinition node]
 
 // fonction globale
 globalFunDef returns [com.paracamplus.ilp2.interfaces.IASTfunctionDefinition node]
-    : 'function' name=IDENT '(' vars+=IDENT? (',' vars+=IDENT)* ')'
+    : 'function' name=IDENT '(' 
+            vars+=IDENT? (',' vars+=IDENT)*  
+            (optional = '&keys' optionalVars +=IDENT defaultValues+=expr (','optionalVars +=IDENT defaultValues+=expr)*)? 
+        ')'
         body=expr
     ;
 
@@ -61,7 +64,10 @@ expr returns [com.paracamplus.ilp1.interfaces.IASTexpression node]
 // construction d'objets
     | 'new' className=IDENT  '(' args+=expr? (',' args+=expr)* ')' # New    
 
-    | fun=expr '(' args+=expr? (',' args+=expr)* ')' # Invocation
+    | fun=expr '(' 
+            args+=expr? (',' args+=expr)*  
+            ( ':' optionalVars+=IDENT optionalArgs+=expr (',' ':' optionalVars+=IDENT optionalArgs+=expr)* ) ?
+        ')' # Invocation
     | op=('-' | '!') arg=expr # Unary
     | arg1=expr op=('*' | '/' | '%') arg2=expr # Binary
     | arg1=expr op=('+' | '-') arg2=expr # Binary

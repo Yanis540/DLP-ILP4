@@ -12,12 +12,12 @@ import com.paracamplus.ilp1.interfaces.IASTblock;
 import com.paracamplus.ilp1.interfaces.IASTexpression;
 import com.paracamplus.ilp1.interfaces.IASTvariable;
 import com.paracamplus.ilp2.interfaces.IASTdeclaration;
-import com.paracamplus.ilp2.interfaces.IASTfunctionDefinition;
 import com.paracamplus.ilp3.interfaces.IASTlambda;
 import com.paracamplus.ilp3.interfaces.IASTnamedLambda;
 import com.paracamplus.ilp4.interfaces.IASTclassDefinition;
 import com.paracamplus.ilp4.interfaces.IASTmethodDefinition;
 import com.paracamplus.ilp4.partiel2016.interfaces.IASTfactory;
+import com.paracamplus.ilp4.partiel2016.interfaces.IASTfunctionDefinition;
 
 import antlr4.ILPMLgrammarPartiel2016Listener;
 import static antlr4.ILPMLgrammarPartiel2016Parser.*;
@@ -48,8 +48,11 @@ public class ILPMLListener implements ILPMLgrammarPartiel2016Listener{
 	public void exitInvocation(
 			InvocationContext ctx) { 
 		ctx.node = factory.newInvocation(
-				ctx.fun.node, 
-				toExpressions(ctx.args));
+			ctx.fun.node, 
+			toExpressions(ctx.args),
+			toVariables(ctx.optionalVars, false), 
+			toExpressions(ctx.optionalArgs)
+		);
 	}
 
 	@Override 
@@ -218,10 +221,15 @@ public class ILPMLListener implements ILPMLgrammarPartiel2016Listener{
 	
 	@Override
 	public void exitGlobalFunDef(GlobalFunDefContext ctx) {
+		Boolean areOptionalVariables = ctx.optional == null ? false : true ; 
 		ctx.node = factory.newFunctionDefinition(
-				factory.newVariable(ctx.name.getText()),
-				toVariables(ctx.vars, false), 
-				ctx.body.node);
+			factory.newVariable(ctx.name.getText()),
+			toVariables(ctx.vars, false), 
+			ctx.body.node,
+			areOptionalVariables,
+			toVariables(ctx.optionalVars, false), 
+			toExpressions(ctx.defaultValues)
+		);
 	}
 
 	@Override
