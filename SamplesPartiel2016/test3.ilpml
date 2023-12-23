@@ -1,0 +1,4 @@
+function toto (a &keys c 1, d 2)(
+    d
+)
+toto (1 : c 3 )
