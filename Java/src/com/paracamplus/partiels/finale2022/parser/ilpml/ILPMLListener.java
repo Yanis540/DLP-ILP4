@@ -1,6 +1,8 @@
 package com.paracamplus.partiels.finale2022.parser.ilpml;
 
 import antlr4.ILPMLgrammarFinale2022Listener;
+import antlr4.ILPMLgrammarFinale2022Parser.ListContext;
+import antlr4.ILPMLgrammarFinale2022Parser.ListRangeContext;
 
 import static antlr4.ILPMLgrammarFinale2022Parser.*;
 
@@ -30,6 +32,29 @@ public class ILPMLListener implements ILPMLgrammarFinale2022Listener {
 		super();
 		this.factory = factory;		
 	}
+        @Override
+    public void enterList(ListContext ctx) {
+    }
+
+    @Override
+    public void exitList(ListContext ctx) {
+        ctx.node = factory.newList(toExpressions(ctx.exprs));
+    }
+
+    @Override
+    public void enterListRange(ListRangeContext ctx) {
+    }
+
+    @Override
+    public void exitListRange(ListRangeContext ctx) {
+        Boolean isCondition = ctx.condition == null ? false : true; 
+        ctx.node = factory.newListRange(ctx.body.node,
+            factory.newVariable(ctx.var.getText()), 
+            ctx.max.node, 
+            ctx.condition == null ? null : ctx.condition.node, 
+            isCondition
+        );
+    }
 
 	
 	/*
