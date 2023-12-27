@@ -1,1 +1,8 @@
-autoclose f = 1 in 2 
+class File {
+    var isOpen;
+    method close() ( self.isOpen = false )
+    method prn(v) ( if self.isOpen then print(v) else print ("CLOSED") )
+}
+
+autoclose f = new File(true) in ( g = f; f.prn("mot1 ") );
+g.prn("mot2")
