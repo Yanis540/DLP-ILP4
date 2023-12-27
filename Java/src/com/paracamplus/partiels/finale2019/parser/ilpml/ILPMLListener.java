@@ -19,6 +19,8 @@ import com.paracamplus.ilp4.interfaces.IASTclassDefinition;
 import com.paracamplus.ilp4.interfaces.IASTmethodDefinition;
 import com.paracamplus.partiels.finale2019.interfaces.IASTfactory;
 import antlr4.ILPMLgrammarFinale2019Listener;
+import antlr4.ILPMLgrammarFinale2019Parser.AutoCloseContext;
+
 import static antlr4.ILPMLgrammarFinale2019Parser.*;
 public class ILPMLListener implements ILPMLgrammarFinale2019Listener {
     
@@ -28,6 +30,19 @@ public class ILPMLListener implements ILPMLgrammarFinale2019Listener {
 		super();
 		this.factory = factory;		
 	}
+    @Override
+    public void enterAutoClose(AutoCloseContext ctx) {
+    }
+
+    @Override
+    public void exitAutoClose(AutoCloseContext ctx) {
+        ctx.node = factory.newAutoClose(
+            factory.newVariable(ctx.var.getText()), 
+            ctx.val.node, 
+            ctx.body.node
+        );
+    }
+
 
 	
 	/*

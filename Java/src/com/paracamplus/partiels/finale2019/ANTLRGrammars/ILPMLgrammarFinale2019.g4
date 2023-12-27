@@ -51,6 +51,7 @@ expr returns [com.paracamplus.ilp1.interfaces.IASTexpression node]
 // objets spéciaux
     | 'self'    # Self
     | 'super' # Super
+    | 'autoclose' var=IDENT '='  val=expr 'in' body=expr # AutoClose
 
 // appel de méthode sur un objet
     | obj=expr '.' field=IDENT  '(' args+=expr? (',' args+=expr)* ')' # Send
