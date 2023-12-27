@@ -1,1 +1,1 @@
-match 1 with A () else 2
+match 1 with A () then 2 else 3

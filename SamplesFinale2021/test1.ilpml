@@ -1,1 +1,1 @@
-$ A()
+match $A(1,2,3) with A(a,b) then 1 else 2  

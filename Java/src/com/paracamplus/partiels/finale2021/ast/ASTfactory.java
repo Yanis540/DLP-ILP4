@@ -9,8 +9,8 @@ import com.paracamplus.partiels.finale2021.interfaces.IASTtag;
 public class ASTfactory extends com.paracamplus.ilp4.ast.ASTfactory implements IASTfactory {
 
     @Override
-    public IASTmatch newMatch(IASTexpression disc, IASTvariable tag, IASTvariable[] variables,IASTexpression alternant) {
-        return new ASTmatch(disc, tag, variables,alternant);
+    public IASTmatch newMatch(IASTexpression disc, IASTvariable tag, IASTvariable[] variables,IASTexpression body,IASTexpression alternant) {
+        return new ASTmatch(disc, tag, variables,body,alternant);
     }
 
     @Override

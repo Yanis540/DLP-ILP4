@@ -8,4 +8,5 @@ public interface IASTmatch extends IASTexpression {
     IASTvariable getTag(); 
     IASTvariable[] getVariables(); 
     IASTexpression getAlternant();
+    IASTexpression getBody();
 }

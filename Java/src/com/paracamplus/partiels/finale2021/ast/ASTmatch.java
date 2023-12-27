@@ -7,19 +7,24 @@ import com.paracamplus.partiels.finale2021.interfaces.IASTmatch;
 import com.paracamplus.partiels.finale2021.interfaces.IASTvisitor;
 
 public class ASTmatch extends ASTexpression implements IASTmatch{
-    private IASTexpression disc,alternant;
+    private IASTexpression disc,body,alternant;
     private IASTvariable tag;
     private IASTvariable[] variables; 
-    public ASTmatch(IASTexpression disc, IASTvariable tag, IASTvariable[] variables,IASTexpression alternant){
+    public ASTmatch(IASTexpression disc, IASTvariable tag, IASTvariable[] variables,IASTexpression body,IASTexpression alternant){
         this.tag = tag; 
         this.disc = disc; 
         this.variables = variables; 
+        this.body = body; 
         this.alternant = alternant; 
     }
     
     @Override
     public IASTexpression getDiscriminant() {
         return this.disc; 
+    }
+    @Override
+    public IASTexpression getBody() {
+        return this.body; 
     }
     @Override
     public IASTexpression getAlternant() {
