@@ -29,6 +29,31 @@ public class ILPMLListener implements ILPMLgrammarFinale2021Listener{
 	public ILPMLListener(IASTfactory factory) {
 		this.factory = factory;		
 	}
+    
+    @Override
+    public void enterMatch(MatchContext ctx) {
+    }
+
+    @Override
+    public void exitMatch(MatchContext ctx) {
+        ctx.node = factory.newMatch(ctx.disc.node, 
+            factory.newVariable(ctx.tag.getText()),
+            toVariables(ctx.vars, false), 
+            ctx.alternant.node
+        );
+    }
+
+    @Override
+    public void enterTag(TagContext ctx) {
+    }
+
+    @Override
+    public void exitTag(TagContext ctx) {
+        ctx.node = factory.newTag(
+            factory.newVariable(ctx.tag.getText()),
+            toExpressions(ctx.exprs)
+        );
+    }
 
 	
 	/*
