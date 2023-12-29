@@ -30,6 +30,13 @@ public class ILPMLListener implements ILPMLgrammarFinale2018Listener {
 		super();
 		this.factory = factory;		
 	}
+    @Override 
+	public void enterSuperWithArgs(SuperWithArgsContext ctx) { 
+	}
+    @Override 
+	public void exitSuperWithArgs(SuperWithArgsContext ctx) { 
+        ctx.node = factory.newSuperWithArgs(toExpressions(ctx.args));
+	}
 
 	
 	/*
