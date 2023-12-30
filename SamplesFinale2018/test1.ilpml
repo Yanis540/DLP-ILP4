@@ -1,1 +1,15 @@
-super_with_args()
+class Point extends Object
+{
+    var x;
+    method m1 (t)
+        self.x + t;
+}
+
+class Point2D extends Point
+{
+    var y;
+    method m1 (t)
+        self.y + super_with_args(2);
+}
+
+(new Point2D(1,2)).m1(3)
