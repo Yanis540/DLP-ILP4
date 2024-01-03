@@ -29,6 +29,19 @@ public class ILPMLListener implements ILPMLgrammarFinale2022_2Listener {
 		super();
 		this.factory = factory;		
 	}
+	
+	@Override 
+	public void exitListRange(ListRangeContext ctx) { 
+		ctx.node = factory.newListRange(
+			ctx.body.node,
+			factory.newVariable(ctx.var.getText()),
+			ctx.max.node, 
+			ctx.condition== null ? null : ctx.condition.node
+		);
+	}
+	@Override 
+	public void enterListRange(ListRangeContext ctx) { 
+	}
 
 	
 	/*

@@ -27,7 +27,7 @@ import com.paracamplus.partiels.finale2022_2.parser.ilpml.ILPMLParser;
 @RunWith(Parameterized.class)
 public class InterpreterTest extends com.paracamplus.ilp4.interpreter.test.InterpreterTest {
     
-	protected static String[] samplesDirName = { "SamplesILP4", "SamplesILP3", "SamplesILP2", "SamplesILP1" };
+	protected static String[] samplesDirName = { "SamplesFinale2022_2" };
     protected static String XMLgrammarFile = "XMLGrammars/grammar4.rng";
     
     public InterpreterTest(final File file) {

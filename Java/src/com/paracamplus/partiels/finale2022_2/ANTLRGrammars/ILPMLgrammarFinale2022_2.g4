@@ -51,6 +51,7 @@ expr returns [com.paracamplus.ilp1.interfaces.IASTexpression node]
 // objets spéciaux
     | 'self'    # Self
     | 'super' # Super
+    | '[' body=expr 'for' var=IDENT 'in' 'range' '(' max=expr ')' ('if' condition =expr)?  ']'# ListRange
 
 // appel de méthode sur un objet
     | obj=expr '.' field=IDENT  '(' args+=expr? (',' args+=expr)* ')' # Send
