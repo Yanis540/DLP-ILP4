@@ -1,1 +1,1 @@
-$ A();
+match $ A(123) with A() then 1 else 2;
