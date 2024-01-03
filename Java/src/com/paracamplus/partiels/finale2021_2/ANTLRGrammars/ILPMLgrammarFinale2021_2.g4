@@ -51,6 +51,9 @@ expr returns [com.paracamplus.ilp1.interfaces.IASTexpression node]
 // objets spéciaux
     | 'self'    # Self
     | 'super' # Super
+    | '$' tag=IDENT '(' exprs+=expr? (','exprs+=expr)* ')' # Tag
+    | 'match' disc=expr 'with' tag=IDENT '(' args+=expr? (','args+=expr)*')' 
+        'then' consequence = expr 'else' alternant = expr # Match
 
 // appel de méthode sur un objet
     | obj=expr '.' field=IDENT  '(' args+=expr? (',' args+=expr)* ')' # Send

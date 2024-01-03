@@ -20,6 +20,9 @@ import com.paracamplus.ilp2.interfaces.IASTdeclaration;
 import com.paracamplus.ilp2.interfaces.IASTfunctionDefinition;
 
 import antlr4.ILPMLgrammarFinale2021_2Listener;
+import antlr4.ILPMLgrammarFinale2021_2Parser.MatchContext;
+import antlr4.ILPMLgrammarFinale2021_2Parser.TagContext;
+
 import static antlr4.ILPMLgrammarFinale2021_2Parser.*;
 
 public class ILPMLListener implements ILPMLgrammarFinale2021_2Listener {
@@ -29,6 +32,33 @@ public class ILPMLListener implements ILPMLgrammarFinale2021_2Listener {
 	public ILPMLListener(IASTfactory factory) {
 		super();
 		this.factory = factory;		
+	}
+	
+	@Override
+	public void enterMatch(MatchContext ctx) {
+	}
+
+	@Override
+	public void exitMatch(MatchContext ctx) {
+		ctx.node = factory.newMatch(
+			ctx.disc.node, 
+			factory.newVariable(ctx.tag.getText()), 
+			toExpressions(ctx.args), 
+			ctx.consequence.node, 
+			ctx.alternant.node
+		);
+	}
+
+	@Override
+	public void enterTag(TagContext ctx) {
+	}
+
+	@Override
+	public void exitTag(TagContext ctx) {
+		ctx.node = factory.newTag(
+			factory.newVariable(ctx.tag.getText()), 
+			toExpressions(ctx.exprs)
+		);
 	}
 
 	
@@ -409,5 +439,6 @@ public class ILPMLListener implements ILPMLgrammarFinale2021_2Listener {
 	@Override	public void enterSuper(SuperContext ctx) {}
 	@Override	public void enterClassDefinition(ClassDefinitionContext ctx) {}
 	@Override	public void enterNew(NewContext ctx) {}
+
 	
 }
