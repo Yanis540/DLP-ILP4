@@ -16,14 +16,15 @@ import com.paracamplus.ilp1.interpreter.interfaces.IGlobalVariableEnvironment;
 import com.paracamplus.ilp1.interpreter.interfaces.IOperatorEnvironment;
 import com.paracamplus.ilp1.interpreter.test.InterpreterRunner;
 import com.paracamplus.ilp1.parser.xml.IXMLParser;
-import com.paracamplus.ilp4.interpreter.GlobalVariableStuff;
+
 import com.paracamplus.ilp4.interpreter.ClassEnvironment;
 import com.paracamplus.ilp4.interpreter.interfaces.IClassEnvironment;
 import com.paracamplus.ilp4.parser.xml.XMLParser;
 import com.paracamplus.partiels.finale2022_2.interfaces.IASTfactory; 
 import com.paracamplus.partiels.finale2022_2.ast.ASTfactory; 
 import com.paracamplus.partiels.finale2022_2.interpreter.Interpreter; 
-import com.paracamplus.partiels.finale2022_2.parser.ilpml.ILPMLParser; 
+import com.paracamplus.partiels.finale2022_2.parser.ilpml.ILPMLParser;
+import com.paracamplus.partiels.finale2022_2.interpreter.GlobalVariableStuff; 
 @RunWith(Parameterized.class)
 public class InterpreterTest extends com.paracamplus.ilp4.interpreter.test.InterpreterTest {
     
