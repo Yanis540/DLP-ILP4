@@ -43,7 +43,7 @@ public class ILPMLListener implements ILPMLgrammarFinale2021_2Listener {
 		ctx.node = factory.newMatch(
 			ctx.disc.node, 
 			factory.newVariable(ctx.tag.getText()), 
-			toExpressions(ctx.args), 
+			toVariables(ctx.vars,false), 
 			ctx.consequence.node, 
 			ctx.alternant.node
 		);

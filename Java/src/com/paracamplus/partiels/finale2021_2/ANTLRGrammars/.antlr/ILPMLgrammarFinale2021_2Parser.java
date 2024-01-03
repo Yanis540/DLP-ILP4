@@ -721,8 +721,8 @@ public class ILPMLgrammarFinale2021_2Parser extends Parser {
 	public static class MatchContext extends ExprContext {
 		public ExprContext disc;
 		public Token tag;
-		public ExprContext expr;
-		public List<ExprContext> args = new ArrayList<ExprContext>();
+		public Token IDENT;
+		public List<Token> vars = new ArrayList<Token>();
 		public ExprContext consequence;
 		public ExprContext alternant;
 		public List<ExprContext> expr() {
@@ -731,7 +731,10 @@ public class ILPMLgrammarFinale2021_2Parser extends Parser {
 		public ExprContext expr(int i) {
 			return getRuleContext(ExprContext.class,i);
 		}
-		public TerminalNode IDENT() { return getToken(ILPMLgrammarFinale2021_2Parser.IDENT, 0); }
+		public List<TerminalNode> IDENT() { return getTokens(ILPMLgrammarFinale2021_2Parser.IDENT); }
+		public TerminalNode IDENT(int i) {
+			return getToken(ILPMLgrammarFinale2021_2Parser.IDENT, i);
+		}
 		public MatchContext(ExprContext ctx) { copyFrom(ctx); }
 	}
 	@SuppressWarnings("CheckReturnValue")
@@ -1075,11 +1078,11 @@ public class ILPMLgrammarFinale2021_2Parser extends Parser {
 				setState(158);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & 8774583833393664L) != 0)) {
+				if (_la==IDENT) {
 					{
 					setState(157);
-					((MatchContext)_localctx).expr = expr(0);
-					((MatchContext)_localctx).args.add(((MatchContext)_localctx).expr);
+					((MatchContext)_localctx).IDENT = match(IDENT);
+					((MatchContext)_localctx).vars.add(((MatchContext)_localctx).IDENT);
 					}
 				}
 
@@ -1092,8 +1095,8 @@ public class ILPMLgrammarFinale2021_2Parser extends Parser {
 					setState(160);
 					match(T__5);
 					setState(161);
-					((MatchContext)_localctx).expr = expr(0);
-					((MatchContext)_localctx).args.add(((MatchContext)_localctx).expr);
+					((MatchContext)_localctx).IDENT = match(IDENT);
+					((MatchContext)_localctx).vars.add(((MatchContext)_localctx).IDENT);
 					}
 					}
 					setState(166);
@@ -1872,9 +1875,9 @@ public class ILPMLgrammarFinale2021_2Parser extends Parser {
 		"\u0096\u0094\u0001\u0000\u0000\u0000\u0097\u010a\u0005\n\u0000\u0000\u0098"+
 		"\u0099\u0005\u000f\u0000\u0000\u0099\u009a\u0003\f\u0006\u0000\u009a\u009b"+
 		"\u0005\u0010\u0000\u0000\u009b\u009c\u00051\u0000\u0000\u009c\u009e\u0005"+
-		"\t\u0000\u0000\u009d\u009f\u0003\f\u0006\u0000\u009e\u009d\u0001\u0000"+
+		"\t\u0000\u0000\u009d\u009f\u00051\u0000\u0000\u009e\u009d\u0001\u0000"+
 		"\u0000\u0000\u009e\u009f\u0001\u0000\u0000\u0000\u009f\u00a4\u0001\u0000"+
-		"\u0000\u0000\u00a0\u00a1\u0005\u0006\u0000\u0000\u00a1\u00a3\u0003\f\u0006"+
+		"\u0000\u0000\u00a0\u00a1\u0005\u0006\u0000\u0000\u00a1\u00a3\u00051\u0000"+
 		"\u0000\u00a2\u00a0\u0001\u0000\u0000\u0000\u00a3\u00a6\u0001\u0000\u0000"+
 		"\u0000\u00a4\u00a2\u0001\u0000\u0000\u0000\u00a4\u00a5\u0001\u0000\u0000"+
 		"\u0000\u00a5\u00a7\u0001\u0000\u0000\u0000\u00a6\u00a4\u0001\u0000\u0000"+

@@ -52,7 +52,7 @@ expr returns [com.paracamplus.ilp1.interfaces.IASTexpression node]
     | 'self'    # Self
     | 'super' # Super
     | '$' tag=IDENT '(' exprs+=expr? (','exprs+=expr)* ')' # Tag
-    | 'match' disc=expr 'with' tag=IDENT '(' args+=expr? (','args+=expr)*')' 
+    | 'match' disc=expr 'with' tag=IDENT '(' vars+=IDENT? (','vars+=IDENT)*')' 
         'then' consequence = expr 'else' alternant = expr # Match
 
 // appel de méthode sur un objet

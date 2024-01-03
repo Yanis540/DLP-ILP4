@@ -6,7 +6,7 @@ import com.paracamplus.ilp1.interfaces.IASTvariable;
 public interface IASTmatch extends IASTexpression {
     IASTexpression getDiscriminant();
     IASTvariable getTag(); 
-    IASTexpression[] getArguments(); 
+    IASTvariable[] getVariables(); 
     IASTexpression getConsequence(); 
     IASTexpression getAlternant();  
 }

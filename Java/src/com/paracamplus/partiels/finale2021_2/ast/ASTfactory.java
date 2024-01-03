@@ -12,9 +12,9 @@ public class ASTfactory extends com.paracamplus.ilp4.ast.ASTfactory implements I
     }
 
     @Override
-    public IASTmatch newMatch(IASTexpression disc, IASTvariable tag, IASTexpression[] arguments,
+    public IASTmatch newMatch(IASTexpression disc, IASTvariable tag, IASTvariable[] variables,
             IASTexpression consequence, IASTexpression alternant) {
-        return new ASTmatch(disc, tag, arguments, consequence, alternant);
+        return new ASTmatch(disc, tag, variables, consequence, alternant);
     }
     
 }

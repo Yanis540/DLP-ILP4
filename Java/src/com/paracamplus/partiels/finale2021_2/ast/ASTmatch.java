@@ -7,13 +7,14 @@ import com.paracamplus.partiels.finale2021_2.interfaces.IASTvisitor;
 public class ASTmatch extends ASTexpression implements IASTmatch{
     private IASTexpression disc, consequence,alternant;
     private IASTvariable tag;
-    private IASTexpression[] arguments;
-    public ASTmatch(IASTexpression disc,IASTvariable tag,IASTexpression[] arguments, IASTexpression consequence,IASTexpression alternant){
+    private IASTvariable[] variables;
+
+    public ASTmatch(IASTexpression disc,IASTvariable tag,IASTvariable[] variables, IASTexpression consequence,IASTexpression alternant){
         this.disc = disc;
         this.consequence = consequence;
         this.alternant = alternant;
         this.tag = tag;
-        this.arguments = arguments;
+        this.variables = variables;
     }
     @Override
 	public <Result, Data, Anomaly extends Throwable> Result accept(
@@ -30,8 +31,8 @@ public class ASTmatch extends ASTexpression implements IASTmatch{
         return this.tag ; 
     }
     @Override
-    public IASTexpression[] getArguments() {
-        return this.arguments; 
+    public IASTvariable[] getVariables() {
+        return this.variables; 
     }
     @Override
     public IASTexpression getConsequence() {
